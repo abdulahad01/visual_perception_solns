@@ -5,7 +5,7 @@ This repository contain the solutions for the programming assignments of the cou
 Following is a basic summary of the weekly concepts and assignments.
 
 ## Week 1:  
- - Introduction to camera projection model
+ - Introduction to the camera projection model.
     - Important points to note
         - Camera matrix : The matrix consisting of the the camera intrinsics like focal length and centre of camera
         - Transformation matrix : The matrix consisting of the Rotation and translation between camera cordinates and world cordinates
@@ -24,6 +24,8 @@ Following is a basic summary of the weekly concepts and assignments.
     - The assignment implements week1 concepts into a scenario to estimate disparity and compute the depth map of an image
     - Implement a maximum corelation based template matching algorithm to detect a bike in the image.
     - Use the output from depth map to estimate the minimum distance to the bike
+
+![Depth Image](img/depth.png)
 
 ## Week 2
 
@@ -59,4 +61,40 @@ Following is a basic summary of the weekly concepts and assignments.
      7. The transformation matrix can be split to get the odometry data wrt to camera frame.
 
      ```
+![Visual Odometry output](img/visual_odom.png)
+## Week 3 - 6
+
+- Introduction to neural networks and in particular convolutional neural nets.
+- The prime area of focus was how conv nets are able to identify simple and very complex features from image data on their own
+- Object Detection :
+  - Object detection is the task of classifiying entities in an image and localizing it within an image
+  - Some algorithms like Faster RCNN were discussed
+    - In faster RCNN the region proposal and image classification are all done in a single convnet
+    - Min-Max suppression is used to avoid multiple bounding boxes for the same object
+    - IOU - Intersection Over Union is an important metric for bounding box evaluation. It calculates the ratio of area of intersection of the predicted BB and ground truth to the total area of the boxes. The IOU is the matched against a threshold.
+    - The quality of the object detection algorithm is evaluated using two parameters:
+      - Precision : It measures how many of the predicted bounding boxes are actually correct precision
+      - Recall : It measures how many of the bounding boxes were actually predicted wrt to the total number of boxes.  
+         
+- Image Segmentaion:
+  - In this each pixel in the image is assigned a class score.
+
+- Assignment:
+  - The final assignment was to estimate drivable space estimation by combining the outputs from object detection and image segmentation , and use conventional image processing algorithms to tune the output.
+
+```
+1. Estimate the 3D cordinates of every pixel in the image. 
+2. From the image segmentation output a mask of the road was made.
+3. Use the mask to get the pixels of road image and find a plane model using RANSAC.
+4. To find lane boundaries we use a combination of segmentation out put and Canny edge detection.
+5. Then we remove horizontal lines and get the line clusters.
+6. The output of object detection has a low precision and a high recall so we use the segmentation output to correct for errors and estimate objects in the drivable region.
+6. Finally we get the objects and the minimum distance to impact.
+```
+![Output of Object detection](img/od.png)  
+
+
+
+Thanks to Dr. Steve Wozniak and the team behind the MOOC for such detailed and rich content on computer vision.
+![Certificate of completion](img/certificate.jpg)
     
