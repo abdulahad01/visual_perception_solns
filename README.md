@@ -95,6 +95,6 @@ Following is a basic summary of the weekly concepts and assignments.
 
 
 
-Thanks to Dr. Steve Wozniak and the team behind the MOOC for such detailed and rich content on computer vision.
+Thanks to Dr. Steven Waslander and the team behind the MOOC for such detailed and rich content on computer vision.
 ![Certificate of completion](img/certificate.jpg)
     
